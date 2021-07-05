@@ -40,8 +40,8 @@ export default function NavBar(): JSX.Element {
   }, [navLocation]);
 
   return (
-    <nav className="bg-white w-full border-b">
-      <div className="flex justify-between">
+    <nav className="bg-white w-full border md:border-none md:shadow">
+      <div className="flex justify-between mx-auto md:max-w-screen-md">
         <div>
           <ul className="ml-2">
             {navState.map(({ href, name, activate }, idx) => (
