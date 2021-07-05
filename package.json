@@ -30,9 +30,10 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "cross-env PORT=4181 craco start",
+    "dev": "cross-env PORT=4181 craco start",
     "build": "craco build",
-    "serve": "pm2 start -i max npx -- serve -n -l 4181 -s build",
+    "start": "pm2 start --name devground -i max npx -- serve -n -l 4181 -s build",
+    "stop": "pm2 stop devground",
     "test": "craco test",
     "eject": "react-scripts eject"
   },
