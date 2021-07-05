@@ -78,7 +78,7 @@ function NavItem({ href, name, activate }: NavState): JSX.Element {
     <li className="inline-block">
       <button
         className={
-          "my-1 ml-1 px-2 py-1 rounded-md " +
+          "my-1 ml-1 px-2 py-1 rounded-md focus:outline-none " +
           (activate ? "bg-red-200" : "hover:bg-red-100 transition-colors")
         }
         onClick={gotoLink}

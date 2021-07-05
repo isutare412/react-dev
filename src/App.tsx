@@ -9,7 +9,7 @@ function App(): JSX.Element {
   return (
     <BrowserRouter>
       <NavBar />
-      <div className="font-sans bg-white w-full p-3 mx-auto md:mt-2 md:shadow-lg md:rounded-lg md:max-w-screen-md">
+      <div className="font-sans bg-white w-full p-4 mx-auto md:mt-2 md:shadow-lg md:rounded-lg md:max-w-screen-md">
         <Switch>
           <Route path="/dev">
             <Dev />
