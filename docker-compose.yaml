@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  mongo:
+    image: mongo:4-bionic
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: playground
+    volumes:
+      - mongo-volume:/data/db
+    networks:
+      - internal
+    ports:
+      - 26521:27017
+
+  mongo-express:
+    image: mongo-express:0.54
+    restart: always
+    networks:
+      - internal
+    ports:
+      - 8092:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: playground
+      ME_CONFIG_BASICAUTH_USERNAME: root
+      ME_CONFIG_BASICAUTH_PASSWORD: playground
+
+networks:
+  internal:
+    driver: bridge
+
+volumes:
+  mongo-volume:
+    driver: local
