@@ -11,6 +11,7 @@ interface NavState {
 
 const navInfos: NavState[] = [
   { href: "/", name: "Home", activate: false },
+  { href: "/intro", name: "Intro", activate: false },
   { href: "/dev", name: "Dev", activate: false },
 ];
 

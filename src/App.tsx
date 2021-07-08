@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import Dev from "./develop/Dev";
 import Home from "./home/Home";
+import Intro from "./intro/Intro";
 import NavBar from "./NavBar";
 
 function App(): JSX.Element {
@@ -13,6 +14,9 @@ function App(): JSX.Element {
         <Switch>
           <Route path="/dev">
             <Dev />
+          </Route>
+          <Route path="/intro">
+            <Intro />
           </Route>
           <Route path="/">
             <Home />
