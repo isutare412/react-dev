@@ -17,5 +17,6 @@ module.exports = {
     sourceType: "module",
   },
   plugins: ["react", "@typescript-eslint"],
+  ignorePatterns: ["*.config.js", "*rc.js"],
   rules: {},
 };
