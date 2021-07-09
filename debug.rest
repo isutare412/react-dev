@@ -1,0 +1,15 @@
+@url = http://localhost:4191
+
+GET {{url}}/api/v1/product HTTP/1.1
+content-type: application/json
+
+{
+}
+
+###
+
+GET {{url}}/api/v1/employee HTTP/1.1
+content-type: application/json
+
+{
+}

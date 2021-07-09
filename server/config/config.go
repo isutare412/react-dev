@@ -9,6 +9,9 @@ import (
 
 var keys = []string{
 	"PORT",
+	"MONGO_URL",
+	"MONGO_USERNAME",
+	"MONGO_PASSWORD",
 }
 
 var optionalKeys = []string{
@@ -73,4 +76,16 @@ func Port() uint16 {
 	}
 
 	return uint16(parsed)
+}
+
+func MongoURL() string {
+	return cache["MONGO_URL"]
+}
+
+func MongoUsername() string {
+	return cache["MONGO_USERNAME"]
+}
+
+func MongoPassword() string {
+	return cache["MONGO_PASSWORD"]
 }

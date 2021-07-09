@@ -3,9 +3,12 @@ package main
 import (
 	"fmt"
 	rawLog "log"
+	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/isutare412/pgserver/api"
 	"github.com/isutare412/pgserver/config"
+	"github.com/isutare412/pgserver/db"
 	"github.com/isutare412/pgserver/log"
 	"github.com/sirupsen/logrus"
 )
@@ -21,6 +24,13 @@ func main() {
 		gin.SetMode(gin.ReleaseMode)
 	}
 
+	// Establish MongoDB connection
+	mongoContainer, err := db.NewContainer(10 * time.Second)
+	if err != nil {
+		logrus.Fatalf("Failed to establish mongo connection: %v", err)
+	}
+	logrus.Infof("Connected MongoDB: %v", config.MongoURL())
+
 	// Middlewares
 	router := gin.New()
 	router.Use(
@@ -31,16 +41,18 @@ func main() {
 	// Front-end serving
 	if path := config.FrontEndDir(); path != "" {
 		router.Static("/", path)
-		logrus.Info(fmt.Sprintf("Use static serving: '%s'", path))
+		logrus.Infof("Use static serving: %s", path)
 	}
 
 	// Back-end serving
-	// TODO
+	apiV1 := router.Group("/api/v1")
+	api.RegisterProductAPIs(apiV1, mongoContainer)
+	api.RegisterEmployeeAPIs(apiV1, mongoContainer)
 
 	// Run server
 	addr := fmt.Sprintf("0.0.0.0:%d", config.Port())
-	logrus.Info(fmt.Sprintf("Run server at addr: %s", addr))
+	logrus.Infof("Run server at: %s", addr)
 	if err := router.Run(addr); err != nil {
-		logrus.Error(fmt.Sprintf("Failed to run: %v", err))
+		logrus.Fatalf("Failed to run: %v", err)
 	}
 }
