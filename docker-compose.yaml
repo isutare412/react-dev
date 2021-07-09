@@ -28,6 +28,8 @@ services:
       - internal
     ports:
       - 4171:80
+    environment:
+      BACKEND_URL: pgserver:4172
 
   mongo:
     image: mongo:4-bionic
