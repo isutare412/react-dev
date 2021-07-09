@@ -1,46 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import NumberButton from "./NumberButton";
 
-interface Product {
+interface ProductInfo {
   id: string;
   image: string;
   name: string;
+  likes: number;
+  dislikes: number;
 }
 
-const samples: Product[] = [
-  {
-    id: "1",
-    image: "https://avatars.githubusercontent.com/u/17609064?v=4",
-    name: "Mimikyu",
-  },
-  {
-    id: "2",
-    image: "https://avatars.githubusercontent.com/u/1983338?v=4",
-    name: "Pairi",
-  },
-  {
-    id: "3",
-    image: "https://avatars.githubusercontent.com/u/20296205?v=4",
-    name: "Yadoran",
-  },
-  {
-    id: "4",
-    image: "https://avatars.githubusercontent.com/u/17609064?v=4",
-    name: "Pikachu",
-  },
-];
-
 export default function ProductList(): JSX.Element {
+  const [products, setProducts] = useState<ProductInfo[]>([]);
+
+  useEffect(() => {
+    fetch("/api/v1/product").then(async (res: Response) => {
+      const products: ProductInfo[] = await res.json();
+      setProducts(products);
+    });
+  }, []);
+
   return (
     <div className="my-2 grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
-      {samples.map((sample) => (
-        <Product key={sample.id} {...sample} />
+      {products.map((product) => (
+        <Product key={product.id} {...product} />
       ))}
     </div>
   );
 }
 
-function Product(product: Product): JSX.Element {
+function Product(product: ProductInfo): JSX.Element {
   return (
     <div className="px-4 pt-4 pb-3 bg-red-50 rounded-md">
       <img
