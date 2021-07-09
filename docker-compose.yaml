@@ -9,6 +9,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: playground
     volumes:
       - mongo-volume:/data/db
+      - ./scripts:/scripts
     networks:
       - internal
     ports:
