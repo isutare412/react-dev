@@ -15,7 +15,6 @@ var keys = []string{
 }
 
 var optionalKeys = []string{
-	"FRONT_END_DIR",
 	"MODE",
 }
 
@@ -50,10 +49,6 @@ func LoadEnvs() error {
 	log.Println("Loaded env configs")
 
 	return nil
-}
-
-func FrontEndDir() string {
-	return cache["FRONT_END_DIR"]
 }
 
 func Mode() string {

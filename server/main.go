@@ -38,13 +38,7 @@ func main() {
 		gin.Recovery(),
 	)
 
-	// Front-end serving
-	if path := config.FrontEndDir(); path != "" {
-		router.Static("/", path)
-		logrus.Infof("Use static serving: %s", path)
-	}
-
-	// Back-end serving
+	// Register APIs
 	apiV1 := router.Group("/api/v1")
 	api.RegisterProductAPIs(apiV1, mongoContainer)
 	api.RegisterEmployeeAPIs(apiV1, mongoContainer)
