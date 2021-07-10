@@ -6,6 +6,14 @@ CSR practice with React.js and some servers.
 
 ## Development
 
+### Database
+
+```bash
+cd database
+
+docker-compose up
+```
+
 ### Backend
 
 ```bash
