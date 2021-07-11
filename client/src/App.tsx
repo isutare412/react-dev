@@ -5,7 +5,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Dev from "./develop/Dev";
 import Home from "./home/Home";
 import Intro from "./intro/Intro";
-import NavBar from "./NavBar";
+import NavBar from "./component/NavBar";
 import initStore from "./store/store";
 
 function App(): JSX.Element {

@@ -5,7 +5,7 @@ import { mdiWeatherNight, mdiWeatherSunny } from "@mdi/js";
 import { RootState } from "../store/rootReducer";
 import { DarkModeAction } from "../store/darkModeReducer";
 
-export default function ModeSwitch(): JSX.Element {
+export default function DarkModeSwitch(): JSX.Element {
   const initialDark = useSelector((state: RootState) => state.darkMode);
   const [active, setActive] = useState(initialDark);
   const dispatchDarkMode = useDispatch<Dispatch<DarkModeAction>>();

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import Icon from "@mdi/react";
 import { mdiGithub } from "@mdi/js";
-import ModeSwitch from "./component/ModeSwitch";
+import DarkModeSwitch from "./DarkModeSwitch";
 
 interface NavState {
   href: string;
@@ -64,7 +64,7 @@ export default function NavBar(): JSX.Element {
             />
           </a>
           <div className="my-auto">
-            <ModeSwitch />
+            <DarkModeSwitch />
           </div>
         </div>
       </div>
