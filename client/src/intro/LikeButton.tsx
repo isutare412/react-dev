@@ -16,7 +16,7 @@ export default function NumberButton({
 }: ButtonProps): JSX.Element {
   return (
     <button
-      className="bg-white rounded-xl w-12 h-14 focus:outline-none hover:bg-red-300 hover:text-white active:bg-red-400 transition-colors"
+      className="bg-white rounded-xl w-12 h-14 focus:outline-none hover:bg-red-300 hover:text-white active:bg-red-400 transition-colors dark:bg-green-700 dark:hover:bg-green-400 dark:active:bg-green-300"
       onClick={() => onLike(image === "up")}
     >
       <Icon

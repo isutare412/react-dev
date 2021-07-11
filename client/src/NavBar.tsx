@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import Icon from "@mdi/react";
 import { mdiGithub } from "@mdi/js";
+import ModeSwitch from "./component/ModeSwitch";
 
 interface NavState {
   href: string;
@@ -41,7 +42,7 @@ export default function NavBar(): JSX.Element {
   }, [navLocation]);
 
   return (
-    <nav className="bg-white w-full border md:border-none md:shadow">
+    <nav className="bg-white w-full border md:border-none md:shadow dark:bg-gray-900 dark:text-gray-100 dark:border-gray-800">
       <div className="flex justify-between mx-auto md:max-w-screen-md">
         <div>
           <ul className="ml-2">
@@ -50,18 +51,21 @@ export default function NavBar(): JSX.Element {
             ))}
           </ul>
         </div>
-        <div className="flex flex-row content-center mr-2">
+        <div className="flex flex-row content-center space-x-1 mr-2">
           <a
             href="https://github.com/isutare412"
-            className="text-gray-400 hover:text-gray-600 transition-colors block my-auto"
+            className="text-gray-400 hover:text-gray-600 transition-colors block my-auto dark:text-gray-400 dark:hover:text-gray-100"
           >
             <Icon
               className="my-auto"
               path={mdiGithub}
               title="Github"
-              size={1.2}
+              size={1.25}
             />
           </a>
+          <div className="my-auto">
+            <ModeSwitch />
+          </div>
         </div>
       </div>
     </nav>
@@ -80,7 +84,7 @@ function NavItem({ href, name, activate }: NavState): JSX.Element {
       <button
         className={
           "my-1 ml-1 px-2 py-1 rounded-md focus:outline-none transition " +
-          (activate ? "bg-red-400 text-white" : "hover:bg-red-200")
+          (activate ? "bg-red-400 text-white dark:bg-green-500 dark:text-black" : "hover:bg-red-200 dark:hover:bg-green-900")
         }
         onClick={gotoLink}
       >
