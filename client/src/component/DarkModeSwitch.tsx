@@ -36,7 +36,7 @@ export default function DarkModeSwitch(): JSX.Element {
           <div
             className={
               "flex w-12 h-7 rounded-full shadow-inner transition-colors " +
-              (active ? "bg-green-400" : "bg-red-400")
+              (active ? "bg-green-500" : "bg-red-400")
             }
           >
             <div className="flex justify-between w-full mx-1">
