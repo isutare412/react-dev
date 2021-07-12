@@ -60,7 +60,7 @@ function Product({ product, onLike }: ProductProps): JSX.Element {
         className="object-cover h-36 w-36 mx-auto rounded"
       />
       <div>
-        <p className="font-bold text-xl text-center mt-1">{product.name}</p>
+        <p className="font-normal text-xl text-center mt-1">{product.name}</p>
         <div className="flex justify-center space-x-2 my-2">
           <div className="flex-none">
             <NumberButton

@@ -57,7 +57,7 @@ function Employee(info: EmployeeInfo): JSX.Element {
             {info.speaking}
           </p>
         </div>
-        <button className="px-4 py-1 text-sm text-red-300 font-semibold rounded-full border border-red-300 hover:text-white hover:bg-red-400 hover:border-transparent focus:outline-none active:bg-red-500 transition dark:text-green-400 dark:border-green-400 dark:hover:bg-green-500 dark:hover:text-white dark:active:bg-green-400">
+        <button className="px-4 py-1 text-sm text-red-300 font-semibold rounded-full border border-red-300 hover:text-white hover:bg-red-400 hover:border-transparent focus:outline-none active:bg-red-500 transition dark:text-green-400 dark:border-green-400 dark:hover:bg-green-500 dark:hover:text-white dark:hover:border-transparent dark:active:bg-green-400">
           Message
         </button>
       </div>
