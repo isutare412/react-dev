@@ -4,7 +4,7 @@ import ClickAwayListener from "react-click-away-listener";
 import Hamburger from "hamburger-react";
 import Icon from "@mdi/react";
 import { mdiGithub } from "@mdi/js";
-import logo from "../resource/dev-ground.png";
+import BrandLogo from "./BrandLogo";
 import DarkModeSwitch from "./DarkModeSwitch";
 
 interface NavState {
@@ -12,6 +12,12 @@ interface NavState {
   name: string;
   useUi: boolean;
   activate: boolean;
+}
+
+interface NavItemProps {
+  name: string;
+  activate: boolean;
+  onClick: () => void;
 }
 
 const navInfos: NavState[] = [
@@ -88,18 +94,22 @@ export default function NavBar(): JSX.Element {
               <Hamburger toggled={navOpen} toggle={setNavOpen} size={24} />
             </div>
             <div className="hidden sm:flex flex-col justify-center">
-              <BrandLogo href="/" gotoLink={gotoLink} />
+              <BrandLogo onClick={() => gotoLink("/")} />
             </div>
             <div className={"content-center space-x-2 hidden sm:flex"}>
               {navState
                 .filter((nav) => nav.useUi)
                 .map((nav, idx) => (
-                  <NavItem key={idx} {...nav} gotoLink={gotoLink} />
+                  <NavItem
+                    key={idx}
+                    {...nav}
+                    onClick={() => gotoLink(nav.href)}
+                  />
                 ))}
             </div>
           </div>
           <div className="flex flex-col justify-center sm:hidden">
-            <BrandLogo href="/" gotoLink={gotoLink} />
+            <BrandLogo onClick={() => gotoLink("/")} />
           </div>
           <div className="flex flex-row content-center space-x-2 mr-2 h-full">
             <a
@@ -124,7 +134,11 @@ export default function NavBar(): JSX.Element {
           <div className="bg-white dark:bg-gray-900 border-b dark:border-gray-800 shadow-xl">
             <div className="flex flex-col space-y-1 my-2">
               {navState.map((state, idx) => (
-                <MobileNavItem key={idx} {...state} gotoLink={gotoLink} />
+                <MobileNavItem
+                  key={idx}
+                  {...state}
+                  onClick={() => gotoLink(state.href)}
+                />
               ))}
             </div>
           </div>
@@ -134,12 +148,7 @@ export default function NavBar(): JSX.Element {
   );
 }
 
-function NavItem({
-  href,
-  name,
-  activate,
-  gotoLink,
-}: NavState & { gotoLink: (href: string) => void }): JSX.Element {
+function NavItem({ name, activate, onClick }: NavItemProps): JSX.Element {
   return (
     <button
       className={
@@ -148,19 +157,14 @@ function NavItem({
           ? "bg-red-400 text-white dark:bg-green-500 dark:text-black"
           : "hover:bg-red-200 dark:hover:bg-green-900")
       }
-      onClick={() => gotoLink(href)}
+      onClick={onClick}
     >
       <span className="text-lg">{name}</span>
     </button>
   );
 }
 
-function MobileNavItem({
-  href,
-  name,
-  activate,
-  gotoLink,
-}: NavState & { gotoLink: (href: string) => void }): JSX.Element {
+function MobileNavItem({ name, activate, onClick }: NavItemProps): JSX.Element {
   return (
     <button
       className={
@@ -169,25 +173,9 @@ function MobileNavItem({
           ? "text-white bg-red-400 dark:bg-gray-700"
           : "hover:bg-red-200 dark:hover:bg-gray-800")
       }
-      onClick={() => gotoLink(href)}
+      onClick={onClick}
     >
       <p className="text-lg text-left ml-3">{name}</p>
     </button>
-  );
-}
-
-function BrandLogo({
-  href,
-  gotoLink,
-}: {
-  href: string;
-  gotoLink: (href: string) => void;
-}): JSX.Element {
-  return (
-    <div className="flex flex-col justify-center">
-      <button onClick={() => gotoLink(href)} className="block">
-        <img src={logo} className="h-10 my-auto" />
-      </button>
-    </div>
   );
 }

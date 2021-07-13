@@ -53,7 +53,7 @@ function Product({ product, onLike }: ProductProps): JSX.Element {
   const onProductLike = (like: boolean) => onLike(product.id, like);
 
   return (
-    <div className="px-4 pt-4 pb-3 bg-red-50 rounded-md dark:bg-green-900">
+    <div className="px-4 pt-4 pb-3 bg-red-50 rounded-md dark:bg-green-900 shadow-md">
       <img
         src={product.image}
         alt={`${product.name} image`}
