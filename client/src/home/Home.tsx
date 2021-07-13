@@ -9,7 +9,7 @@ export default function Home(): JSX.Element {
 
       <div className="mx-auto text-center w-max">
         <span className="text-sm">
-          The site is on construction. Go to&nbsp;
+          The site is under construction. Go to&nbsp;
           <a
             className="text-red-400 hover:text-red-600 transition-colors dark:text-green-300 dark:hover:text-green-500"
             href="https://github.com/isutare412"
