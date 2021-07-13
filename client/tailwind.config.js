@@ -18,12 +18,14 @@ module.exports = {
           "Helvetica Neue",
           "sans-serif",
         ],
+        title: ["Montserrat Subrayada", "sans-serif"],
       },
     },
   },
   variants: {
     extend: {
       backgroundColor: ["active"],
+      textColor: ["active"],
     },
   },
   plugins: [],

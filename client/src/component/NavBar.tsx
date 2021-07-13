@@ -96,7 +96,7 @@ export default function NavBar(): JSX.Element {
             <div className="hidden sm:flex flex-col justify-center">
               <BrandLogo onClick={() => gotoLink("/")} />
             </div>
-            <div className={"content-center space-x-2 hidden sm:flex"}>
+            <div className={"content-center space-x-1 hidden sm:flex"}>
               {navState
                 .filter((nav) => nav.useUi)
                 .map((nav, idx) => (
@@ -152,14 +152,17 @@ function NavItem({ name, activate, onClick }: NavItemProps): JSX.Element {
   return (
     <button
       className={
-        "px-2 py-1 my-auto rounded-md focus:outline-none transition " +
-        (activate
-          ? "bg-red-400 text-white dark:bg-green-500 dark:text-black"
-          : "hover:bg-red-200 dark:hover:bg-green-900")
+        "block px-2 py-1.5 my-auto space-y-0 rounded-md focus:outline-none hover:bg-red-50 dark:hover:bg-gray-800 active:bg-red-100 dark:active:bg-gray-700 transition-color"
       }
       onClick={onClick}
     >
-      <span className="text-lg">{name}</span>
+      <p className="text-lg font-light leading-snug">{name}</p>
+      <div
+        className={
+          "w-full h-0.5 rounded-full " +
+          (activate ? "bg-red-400 dark:bg-green-500" : "")
+        }
+      ></div>
     </button>
   );
 }

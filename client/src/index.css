@@ -6,6 +6,9 @@
 /* Google Font: Inter */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
+/* Google Font: Montserrat Subrayada */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Subrayada&display=swap');
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

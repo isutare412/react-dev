@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "../resource/dev-ground.png";
 
 interface BrandLogoProps {
   onClick: () => void;
@@ -7,10 +6,10 @@ interface BrandLogoProps {
 
 export default function BrandLogo({ onClick }: BrandLogoProps): JSX.Element {
   return (
-    <div className="flex flex-col justify-center">
-      <button onClick={onClick} className="block">
-        <img src={logo} className="h-10 my-auto" />
-      </button>
-    </div>
+    <button onClick={onClick} className="block my-auto">
+      <p className="text-3xl align-middle font-title focus:outline-none transition-colors hover:text-red-400 dark:hover:text-green-500 active:text-red-500 dark:active:text-green-600">
+        DevGround
+      </p>
+    </button>
   );
 }
